@@ -4,7 +4,8 @@ from sklearn.svm import SVC
 
 
 def get_line_points(svc):
-    # это коэффиценты
+    # вытаскиваем параметры из svc (коэффиценты) для линии
+    # точка где медиана идет
     w = svc.coef_[0]
     print("w", w)
     a = -w[0] / w[1]
@@ -17,7 +18,7 @@ def get_line_points(svc):
 
 
 def draw_circle(points, event, current_class, screen):
-    color = GREEN
+    color = BLUE
     if current_class == 1:
         color = RED
     pygame.draw.circle(screen, color, event.pos, radius)
@@ -74,13 +75,14 @@ def draw_pygame():
         pygame.display.update()
 
 
-# SVM к 22.11.2022 (ноябрь)
+# SVM
 if __name__ == '__main__':
     width, height = 600, 400
     RED = (255, 0, 0)
     GREEN = (0, 255, 0)
     WHITE = (255, 255, 255)
-    radius = 5
+    BLUE = (0, 0, 255)
+    radius = 10
     points = []
-    colors = {0: GREEN, 1: RED}
+    colors = {0: BLUE, 1: RED}
     draw_pygame()
